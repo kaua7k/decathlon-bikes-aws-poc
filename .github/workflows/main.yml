@@ -1,25 +1,33 @@
-name: decathlon_bikes_sync_images
+fs-0ffca50a51dfc3f8a
+
+	
+
+sudo mount -t efs fs-09cdf7addc43e9631/ /mnt/efs
+
+
+name: Sync Images to Server
 
 on:
   push:
     branches:
-      - "main"
+      - main
     paths-ignore:
       - "*.txt"
 
 jobs:
-  githubactions-decathlon-bikes:
+  sync-images:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Upload Image via SCP
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Upload image via SCP
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SCP_HOST }}
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_PRIVATE_KEY }}
           port: ${{ secrets.SCP_PORT }}
-          source: "C:\Users\56327148883\Downloads\FBrG7fZWYAMkBD7.jpg"  # Caminho local do Windows
-          target: "https://github.com/kaua7k/decathlon-bikes-aws-poc.git"  # Caminho de destino no servidor Git
+          source: "FBrG7fZWYAMkBD7.jpg"  # Caminho da imagem dentro do repositório
+          target: "https://github.com/kaua7k/decathlon-bikes-aws-poc.git"  # Caminho de destino no servidor remoto
