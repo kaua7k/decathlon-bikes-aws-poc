@@ -22,5 +22,5 @@ jobs:
           username: ${{ secrets.SCP_USERNAME }}
           key: ${{ secrets.SCP_PRIVATE_KEY }}
           port: ${{ secrets.SCP_PORT }}
-          source: "FBrG7fZWYAMkBD7.jpg"  # Caminho da imagem dentro do repositóri0
-          target: "54.161.14.126"  # Caminho de destino no servidor remoto
+          source: "decathlon-bikes-aws-poc /FBrG7fZWYAMkBD7.jpg"  # Caminho da imagem dentro do repositóri0
+          target: "/mnt/efs"  # Caminho de destino no servidor remoto
